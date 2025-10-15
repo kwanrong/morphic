@@ -14,11 +14,11 @@ const runMigrations = async () => {
   }
 
   const connectionString = process.env.DATABASE_URL
-  // For Supabase connections, we need to disable SSL verification in some environments
-  // and disable prepared statements for transaction pooling mode
+  // SSL configuration: set to false if your server doesn't use SSL
+  // or set to 'require' / { rejectUnauthorized: false } if it does
   const sql = postgres(connectionString, {
-    ssl: { rejectUnauthorized: false },
-    prepare: false
+    ssl: false, // Disable SSL - adjust based on your database server configuration
+    prepare: false // Required for transaction pooling mode
   })
 
   const db = drizzle(sql)

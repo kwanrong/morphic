@@ -11,8 +11,6 @@ RUN bun install
 COPY . .
 RUN bun next telemetry disable
 RUN bun run build
-# Run Migration
-RUN bun run migrate
 
 # Runtime stage
 FROM oven/bun:1.2.12 AS runner

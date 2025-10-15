@@ -43,7 +43,7 @@ if (isDevelopment) {
   )
 }
 const client = postgres(connectionString, {
-  ssl: { rejectUnauthorized: false },
+  ssl: false, // Disable SSL - set to 'require' or { rejectUnauthorized: false } if your server uses SSL
   prepare: false,
   max: 20 // Max 20 connections
 })
